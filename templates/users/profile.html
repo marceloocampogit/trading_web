@@ -1,0 +1,283 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+			<div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <p class="mb-0">Your business dashboard template</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Profile</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="profile card card-body px-3 pt-3 pb-0">
+                            <div class="profile-head">
+                                <div class="photo-content">
+                                    <div class="cover-photo">
+                                        <img src="{% static 'images/profile/cover.jpg' %}">
+                                    </div>
+                                </div>
+                                <div class="profile-info">
+									<div class="profile-photo">
+										<img src="{% static 'images/profile/profile.png' %}" class="img-fluid rounded-circle" alt="">
+									</div>
+									<div class="profile-details">
+										<div class="profile-name px-3 pt-2">
+											<h4 class="text-primary mb-0">Mitchell C. Shay</h4>
+											<p>UX / UI Designer</p>
+										</div>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4">
+						<div class="row">
+							<div class="col-xl-12">
+							</div>
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="profile-blog">
+											<h5 class="text-primary d-inline">Today Highlights</h5>
+											<img src="{% static 'images/profile/1.jpg' %}" alt="" class="img-fluid mt-4 mb-4 w-100">
+											<h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
+											<p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="profile-news">
+											<h5 class="text-primary d-inline">Our Latest News</h5>
+											<div class="media pt-3 pb-3">
+												<img src="{% static 'images/profile/5.jpg' %}" alt="image" class="mr-3 rounded" width="75">
+												<div class="media-body">
+													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
+													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
+												</div>
+											</div>
+											<div class="media pt-3 pb-3">
+												<img src="{% static 'images/profile/6.jpg' %}" alt="image" class="mr-3 rounded" width="75">
+												<div class="media-body">
+													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
+													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
+												</div>
+											</div>
+											<div class="media pt-3 pb-3">
+												<img src="{% static 'images/profile/7.jpg' %}" alt="image" class="mr-3 rounded" width="75">
+												<div class="media-body">
+													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
+													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="profile-tab">
+                                    <div class="custom-tab-1">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link">About Me</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="about-me" class="tab-pane fade active show">
+                                                <div class="profile-about-me">
+                                                    <div class="pt-4 border-bottom-1 pb-3">
+                                                        <h4 class="text-primary">About Me</h4>
+                                                        <p class="mb-2">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                                                        <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-lang  mb-5">
+                                                    <h4 class="text-primary mb-2">Native language</h4>
+													<p>English</p>
+                                                </div>
+                                                <div class="profile-personal-info">
+                                                    <h4 class="text-primary mb-4">Personal Information</h4>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Name <span class="pull-right">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>Mitchell C.Shay</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Email <span class="pull-right">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9ccd1c8c4d9c5cce9ccd1c8c4d9c5ccc587cac6c4">[email&#160;protected]</a></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Availability <span class="pull-right">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>Full Time (Free Lancer)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Birth Date<span class="pull-right">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>01/27/2022</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Location <span class="pull-right">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>Rosemont Avenue Melbourne,
+                                                                Florida</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Year Experience <span class="pull-right">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>07 Year Experiences</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="profile-settings" class="tab-pane fade">
+                                                <div class="pt-3">
+                                                    <div class="settings-form">
+                                                        <h4 class="text-primary">Account Setting</h4>
+                                                        <form action="" method="POST">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="first name">First Name</label>
+                                                                    <input type="text" class="form-control" id="first name" name="first name">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="last name">Last name</label>
+                                                                    <input type="text" class="form-control" id="first name" name="first name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="phone_number">Phone Number</label>
+                                                                    <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Enter phone number">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="facebook">Facebook</label>
+                                                                    <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter Facebook URL">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="profile_image">Profile Image</label>
+                                                                    <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="cover_image">Cover Image</label>
+                                                                    <input type="file" class="form-control-file" id="cover_image" name="cover_image">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="occupation">Occupation</label>
+                                                                    <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter occupation">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="description">Description</label>
+                                                                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="native_language">Native Language</label>
+                                                                    <input type="text" class="form-control" id="native_language" name="native_language" placeholder="Enter native language">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="availability">Availability</label>
+                                                                    <select class="form-control" id="availability" name="availability">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>Full-time</option>
+                                                                        <option>Part-time</option>
+                                                                        <option>Freelance</option>
+                                                                        <option>Other</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="birthdate">Birthdate</label>
+                                                                    <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="year_experience">Years of Experience</label>
+                                                                    <input type="number" class="form-control" id="year_experience" name="year_experience" placeholder="Enter years of experience">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label>Address</label>
+                                                                    <input type="text" placeholder="1234 Main St" class="form-control">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label>Country</label>
+                                                                    <select class="form-control default-select" id="inputState">
+                                                                        <option selected="">Choose...</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                        <option>Option 3</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="company_name">Company Name</label>
+                                                                    <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name">
+                                                                </div>
+                                                            </div>
+                                                            <button class="btn btn-primary" type="submit">Update Info</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+{% endblock %}
