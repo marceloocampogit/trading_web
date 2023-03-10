@@ -47,6 +47,7 @@ MY_APPS = [
     'users',
     'coins',
     'news',
+    'admin_settings',
 ]
 
 INSTALLED_APPS = BASE_APPS + THIRD_APPS + MY_APPS
