@@ -57,9 +57,9 @@
 									<div class="card-body">
 										<div class="profile-blog">
 											<h5 class="text-primary d-inline">Today Highlights</h5>
-											<img src="{% static 'images/profile/1.jpg' %}" alt="" class="img-fluid mt-4 mb-4 w-100">
-											<h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
-											<p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+											<img src="{{main_new.url_to_image}}" alt="" class="img-fluid mt-4 mb-4 w-100">
+											<h4><a href="{{main_new.url_to_news}}" target= "_blank" class="text-black">{{main_new.title}}</a></h4>
+											<p class="mb-0">{{main_new.description}}</p>
 										</div>
 									</div>
 								</div>
@@ -69,27 +69,15 @@
 									<div class="card-body">
 										<div class="profile-news">
 											<h5 class="text-primary d-inline">Our Latest News</h5>
-											<div class="media pt-3 pb-3">
-												<img src="{% static 'images/profile/5.jpg' %}" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="{% static 'images/profile/6.jpg' %}" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="{% static 'images/profile/7.jpg' %}" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
+                                            {% for news in other_news %}
+                                                <div class="media pt-3 pb-3">
+                                                    <img src="{{news.url_to_image}}" alt="image" class="mr-3 rounded" width="75">
+                                                    <div class="media-body">
+                                                        <h5 class="m-b-5"><a href="{{news.url_to_news}}" target= "_blank" class="text-black">{{news.title}}</a></h5>
+                                                        <p class="mb-0">{{news.description}}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
 										</div>
 									</div>
 								</div>

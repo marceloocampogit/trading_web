@@ -10,6 +10,8 @@ from admin_settings.models import Country, Language
 from users.forms import RegisterForm, UserProfileForm
 from users.models import UserProfile
 
+from news.utils import get_random_news
+
 # Create your views here.
 
 def login_view(request):
@@ -57,10 +59,14 @@ def user_list(request):
 
 def user_profile(request):
     if request.method == 'GET':
+        #Separo la noticia principal de las secundarias
+        main_new, other_news = get_random_news()
         context = {
             #Paso por contexto lenguajes y paises para mostrar en el front
             'languages': Language.objects.all(),
             'countries': Country.objects.all(),
+            'main_new': main_new,
+            'other_news': other_news,
         }
         return render(request, 'users/profile.html', context = context)\
     
