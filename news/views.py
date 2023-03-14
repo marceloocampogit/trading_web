@@ -17,20 +17,26 @@ def fetch_news(request):
     
     response = response.json()
 
+    #Lista vacia para guardar todas las noticias de la base de datos
+    news_to_create = []
+
     for article in response['articles']:
 
+        #Si cumple todas las condiciones de un articulo completo, lo guardo en la lista
         if all([article['title'], article['description'], article['url'], article['urlToImage'], article['publishedAt']]):
-            #Si cumple todas las condiciones de un articulo completo, lo cargo en la base de datos
-            News.objects.create(
-                title=article['title'],
-                description=article['description'],
-                url_to_news=article['url'],
-                url_to_image=article['urlToImage'],
-                published_at=article['publishedAt'])
             
+                news_to_create.append(News(
+                    title=article['title'],
+                    description=article['description'],
+                    url_to_news=article['url'],
+                    url_to_image=article['urlToImage'],
+                    published_at=article['publishedAt'])
+                )
         else:
-            #Sino sigo buscando
             continue
+    
+    #Genero todas las noticias de una para performance
+    News.object.bulk_create(news_to_create)
     
     return HttpResponse('News fetched successfully')
 
