@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -13,7 +14,7 @@ from users.models import UserProfile
 from news.utils import get_random_news
 
 # Create your views here.
-
+@login_required
 def login_view(request):
     #Si voy por get, le muestro el formulario
     if request.method == 'GET':
@@ -39,6 +40,7 @@ def login_view(request):
             }
             return render(request, 'users/login.html', context)
 
+@login_required
 def register(request):
     if request.method == 'GET':
         return render(request, 'users/register.html')
@@ -54,9 +56,11 @@ def register(request):
             }
             return render(request, 'users/register.html', context)
 
+@login_required
 def user_list(request):
     return render(request, 'users/user_list.html')
 
+@login_required
 def user_profile(request):
     if request.method == 'GET':
         #Separo la noticia principal de las secundarias

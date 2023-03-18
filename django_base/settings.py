@@ -142,3 +142,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Redirigir a login cuando el usuario no esta loggeado y la vista tiene login_required
+LOGIN_URL = '/users/login/'
