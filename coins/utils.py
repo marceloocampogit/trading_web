@@ -36,3 +36,39 @@ def generate_transactions():
 
             today -= timedelta(days=1)
     Transactions.objects.bulk_create(transactions_to_create)
+
+def get_five_days_data():
+
+    context = {
+        'data': []
+    }
+    #Obtengo fechas para mi array
+    dates_array = [Transactions.get_last_day()]
+
+    for i in range(1, 5):
+        #Voy haciendo mi insert de fechas 1 a 1
+        dates_array.append( (dates_array[0] - timedelta(days=1)).strftime('%d/%m') )
+
+    #Formateamos la primer fecha
+    dates_array[0] = dates_array[0].strftime('%d/%m')
+
+    #Revertimos el array para que quede de la forma que necesito
+    dates_array.reverse()
+
+    #Agregamos el array de fechas al contexto
+    context['dates'] = dates_array
+
+    count = 0
+    for coin in Coin.objects.all():
+        context['data'].append(
+            {
+            'name': coin.name,
+            'data': coin.get_last_five_days_data()
+            }
+        )
+
+    return context
+
+def get_recent_transactions():
+    since_day = Transactions.get_last_day() - timedelta(days=2)
+    return random.choices(Transactions.objects.filter(date__gte=since_day), k=6)

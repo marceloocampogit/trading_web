@@ -23,25 +23,3 @@ def portfolio(request):
 def generate_data(request):
     generate_transactions()
     return HttpResponse('Data generated')
-
-def get_five_days_data(request):
-    context = {
-        'data': []
-    }
-    #Obtengo fechas para mi array
-    dates_array = [Transactions.get_last_day()]
-
-    for i in range(1, 5):
-        #Voy haciendo mi insert de fechas 1 a 1
-        dates_array.append(dates_array[0] - timedelta(days=1))
-
-        count = 0
-        for coin in Coin.objects.all():
-            context['data'].append(
-                {
-                'name': coin.name,
-                'data': coin.get_last_five_days_data()
-                }
-            )
-        print(context)
-    return HttpResponse('Data')
