@@ -58,7 +58,14 @@ def register(request):
 
 @login_required
 def user_list(request):
-    return render(request, 'users/user_list.html')
+    if not request.user.is_superuser:
+        return redirect('index')
+
+    context = {
+        'users': User.objects.exclude(id=request.user.id),
+    }
+
+    return render(request, 'users/user_list.html', context=context)
 
 @login_required
 def user_profile(request):
@@ -100,3 +107,19 @@ def user_profile(request):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+
+@login_required
+def block_user_view(request, pk):
+    if not request.user.is_superuser:
+        return redirect('index')
+    user = User.objects.get(id=pk)
+    user.is_active = not user.is_active
+    user.save()
+    return redirect('user_list')
+
+@login_required
+def delete_user_view(request, pk):
+    if not request.user.is_superuser:
+        return redirect('index')
+    User.objects.get(id=pk).delete()
+    return redirect('user_list')

@@ -69,6 +69,7 @@ def get_five_days_data():
 
     return context
 
+
 def get_recent_transactions():
     since_day = Transactions.get_last_day() - timedelta(days=2)
     return random.choices(Transactions.objects.filter(date__gte=since_day), k=6)

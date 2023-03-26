@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models import Avg
+from django.db.models import Avg, Sum
 from datetime import timedelta
 
 class Card(models.Model):
@@ -66,12 +66,50 @@ class Coin(models.Model):
         week_price /= 7
         return week_price, end_date
     
+    #Devuelve el porcentaje de ganancia o perdida de la ultima semana
     def get_performance(self):
         last_day = self.get_last_day()
         actual_week_price, last_day = self.get_performance_of_week(last_day)
         last_week_price, last_day = self.get_performance_of_week(last_day)
         return round(((actual_week_price - last_week_price) / (last_week_price)) * 100, 2)
     
+    def get_performance_24(self):
+        last_day = self.get_last_day()
+        actual_price = self.get_price_by_date(last_day)
+        last_day -= timedelta(days=1)
+        previous_price = self.get_price_by_date(last_day)
+        return round(((actual_price - previous_price) / (previous_price)) * 100, 2)
+    
+    #Devuelve un array con las ultimas 7 transacciones
+    def get_lasts_transactions(self):
+        if self.transactions.count() == 0:
+            return []
+        return self.transactions.order_by('-date')[:7]
+    
+    def get_last_ten_days_data(self):
+        data = []
+        day = {}
+        last_day = self.get_last_day()
+        for i in range(1, 11):
+            
+            day = {
+                #'date': last_day.strftime('%d/%m'),
+                #'price': round(self.get_price_by_date(last_day), 2)
+                last_day.strftime('%d/%m'): round(self.get_price_by_date(last_day), 2)
+            }
+            data.append(day)
+            last_day -= timedelta(days=1)
+        return data
+    
+    def get_trading_volume_coin(self):
+        date = self.get_last_day()
+        return round(self.transactions.filter(date__date = date).aggregate(trading_volume = Sum('amount'))['trading_volume'],2 )
+    
+    def get_trading_volume(self):
+        date = self.get_last_day()
+        last_day_price = self.get_last_day_price()
+        return round(self.transactions.filter(date__date = date).aggregate(volume = (Sum('amount') * last_day_price))['volume'], 2)
+
 class Transactions(models.Model):
 
     CHOICE = (
@@ -93,4 +131,5 @@ class Transactions(models.Model):
     def get_last_day(cls):
         return cls.objects.all().order_by('-date').first().date.date()
     
-    ##53 minutos la grabacion de luca
+    def get_total_price(self):
+        return round(self.price * self.amount, 2)
