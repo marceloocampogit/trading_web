@@ -19,11 +19,13 @@ def coin_details(request, id):
         context = {
             'coin': Coin.objects.get(pk=id),
             'graph_data': json.dumps(Coin.objects.get(pk=id).get_last_ten_days_data()),
+            #'graph_data': Coin.objects.get(pk=id).get_last_ten_days_data(),
 
         }
 
         print(context['graph_data'])
         return render(request, 'coins/coin-details.html', context = context)
+
 
 @login_required
 def my_wallets(request):

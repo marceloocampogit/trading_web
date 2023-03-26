@@ -12,7 +12,7 @@
 					<h2 class="text-black mr-auto font-w600 mb-3">Coin Details</h2>
 				</div>
 				<div class="tab-content">
-					<div class="tab-pane fade show active" id="Coin-selected">
+					<div class="tab-pane fade show active" id="{{ coin.id }}">
 						<div id="graph-data" style="display: none;">[{"26/02":14406.322580645161}, {"25/02":14776.016129032258}, {"24/02":14708.612903225807}, {"23/02":14641.467741935483}, {"22/02":14722.045161290323}, {"21/02":14829.90322580645}, {"20/02":14897.963133640553}, {"19/02":14951.431451612903}, {"18/02":14933.362007168458}, {"17/02":14945.40322580645}]</div>
 						<div id="graph-data" style="display: none;"> {{graph_data}} </div>
 						<div class="row">
@@ -76,11 +76,11 @@
 												</div>
 												<div class="px-2 info-group">
 													<p class="fs-14 mb-1">Volume (24h)</p>
-													<h3 class="fs-20 font-w600 text-black">${{coin.get_trading_volume_coin}} {{coin.code}}</h3>
+													<h3 class="fs-20 font-w600 text-black">${{coin.get_trading_volume_coin}}</h3>
 												</div>
 												<div class="px-2 info-group">
 													<p class="fs-14 mb-1">Trading Volume (24h)</p>
-													<h3 class="fs-20 font-w600 text-black">$ {{coin.get_trading_volume}}</h3>
+													<h3 class="fs-20 font-w600 text-black">{{coin.get_trading_volume}} {{coin.code}}</h3>
 												</div>
 											</div>
 										</div>
@@ -156,7 +156,7 @@
 						</div>
 					</div>
 				</div>
-      </div>
+      		</div>
 		</div>
     </div>
 	

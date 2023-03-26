@@ -93,19 +93,18 @@ class Coin(models.Model):
         for i in range(1, 11):
             
             day = {
-                #'date': last_day.strftime('%d/%m'),
-                #'price': round(self.get_price_by_date(last_day), 2)
-                last_day.strftime('%d/%m'): round(self.get_price_by_date(last_day), 2)
+                'date': last_day.strftime('%d/%m'),
+                'price': round(self.get_price_by_date(last_day), 2)
             }
             data.append(day)
             last_day -= timedelta(days=1)
         return data
     
-    def get_trading_volume_coin(self):
+    def get_trading_volume(self):
         date = self.get_last_day()
         return round(self.transactions.filter(date__date = date).aggregate(trading_volume = Sum('amount'))['trading_volume'],2 )
     
-    def get_trading_volume(self):
+    def get_trading_volume_coin(self):
         date = self.get_last_day()
         last_day_price = self.get_last_day_price()
         return round(self.transactions.filter(date__date = date).aggregate(volume = (Sum('amount') * last_day_price))['volume'], 2)
